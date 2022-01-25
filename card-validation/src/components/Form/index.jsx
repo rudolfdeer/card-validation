@@ -7,12 +7,11 @@ const ValidationSchema = Yup.object().shape({
   name: Yup.string()
     .required('required'),
   cardnumber: Yup.string()
-    .min(16, 'too short')
-    .max(16, 'too long')
+    .matches(/^4[0-9]{12}(?:[0-9]{3})?$/, 'enter a valid card number')
     .required('required'),
   expireMM: Yup.string().required('required'),
   expireYY: Yup.string().required('required'),
-  securitycode: Yup.string().min(3, 'too short').max(3, 'too long').required('required'),
+  securitycode: Yup.string().min(3, 'too short').max(4, 'too long').required('required'),
 });
 
 export default function CardForm() {
@@ -30,7 +29,7 @@ export default function CardForm() {
          console.log(values);
        }}
      >
-       {({ errors, touched}) => (
+       {({ errors, touched }) => (
          <Form className="form">
             <div className="field">
               <label htmlFor="name" className="field__label">Name</label>
