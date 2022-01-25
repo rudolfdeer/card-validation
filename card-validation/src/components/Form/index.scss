@@ -1,0 +1,76 @@
+.form {
+  display: grid;
+  grid-column-gap: 10px;
+  grid-template-columns: auto auto;
+  grid-template-rows: 90px 90px 90px;
+  grid-template-areas: "name name""number number""expiration security""submit submit";
+  max-width: 400px;
+  padding: 20px;
+  color: #707070;
+
+  .field {
+    position: relative;
+
+    &:first-child {
+      grid-area: name;
+    }
+
+    &:nth-child(2) {
+      grid-area: number;
+    }
+
+    &:nth-child(3) {
+      grid-area: expiration;
+    }
+
+    &:nth-child(4) {
+      grid-area: security;
+    }
+
+    &:last-child {
+      grid-area: submit;
+    }
+
+    &__label {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    &__input {
+      padding: 15px;
+      font-size: 16px;
+      width: 100%;
+      border-radius: 3px;
+      border: 1px solid #dcdcdc;
+      box-sizing: border-box;
+
+      &--submit {
+        width: 100%;
+        height: 40px;
+        border: 1px solid #dcdcdc;
+        background-color: #A9DFBF;
+
+        &:hover {
+          cursor: pointer;
+          transform: scale(1.02);
+        }
+      }
+    }
+
+    &__select {
+      display: inline-block;
+      height: 50px;
+      border: 1px solid #dcdcdc;
+      color: #707070;
+    }
+
+    &__error {
+      display: block;
+      width: 100%;
+      height: 10px;
+      margin-bottom: 22px;
+      color: red;
+      font-size: 10px;
+    }
+  }
+}

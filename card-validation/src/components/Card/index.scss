@@ -1,0 +1,32 @@
+.card {
+  position: relative;
+  width: 425px;
+  height: 270px;
+  padding: 30px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background: #D6EAF8;
+  font-size: 16px;
+
+  &__number {
+    font-size: 30px;
+    padding-top: 90px;
+    margin-bottom: 15px;
+  }
+
+  &__expiry-date {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: start;
+  }
+
+  &__owner {
+    text-align: left;
+  }
+
+  &__logo {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+}
