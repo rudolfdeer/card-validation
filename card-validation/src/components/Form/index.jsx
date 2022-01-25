@@ -7,13 +7,13 @@ const ValidationSchema = Yup.object().shape({
   name: Yup.string()
     .required('required'),
   cardnumber: Yup.string()
-    .min(16, 'too short!')
+    .min(16, 'too short')
+    .max(16, 'too long')
     .required('required'),
   expireMM: Yup.string().required('required'),
   expireYY: Yup.string().required('required'),
-  securitycode: Yup.string().min(3).max(3).required('required'),
+  securitycode: Yup.string().min(3, 'too short').max(3, 'too long').required('required'),
 });
-
 
 export default function CardForm() {
   return (
@@ -31,8 +31,7 @@ export default function CardForm() {
        }}
      >
        {({ errors, touched}) => (
-         <Form>
-          <form className="form">
+         <Form className="form">
             <div className="field">
               <label htmlFor="name" className="field__label">Name</label>
               <Field name="name" type="text" className="field__input"/>
@@ -50,8 +49,6 @@ export default function CardForm() {
             <div className="field">
                 <label htmlFor="expirationdate" className="field__label">Expiration (mm/yy)</label>
                 <div className="field__container">
-
-                
                 <div className="field__container__content">
                 <Field as="select" name='expireMM' className="field__select">
                   <option value=''>Month</option>
@@ -69,7 +66,7 @@ export default function CardForm() {
                   <option value='12'>December</option>
                 </Field>
                 {errors.expireMM && touched.expireMM ? (
-                  <span className="field__error--inline">{errors.expireMM}</span>
+                  <span className="field__error">{errors.expireMM}</span>
                 ) : null} 
                 </div>
                 <div className="field__container__content">
@@ -82,7 +79,7 @@ export default function CardForm() {
                     <option value='24'>2026</option>
                 </Field> 
                 {errors.expireYY && touched.expireYY ? (
-                  <span className="field__error--inline">{errors.expireYY}</span>
+                  <span className="field__error">{errors.expireYY}</span>
                 ) : null} 
                 </div>
                 </div>
@@ -97,11 +94,8 @@ export default function CardForm() {
             <div className="field">
               <button type="submit" className="field__input--submit">Submit</button>
             </div>
-          </form>
         </Form>
        )}
-        
-
     </Formik>
   )
 }
