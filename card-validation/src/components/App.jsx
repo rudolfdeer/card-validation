@@ -1,5 +1,5 @@
 import Card from './Card';
-import Form from './Form';
+import CardForm from './Form';
 
 function App() {
   return (
@@ -9,7 +9,7 @@ function App() {
       </header>
       <main className="main">
         <Card/>
-        <Form/>
+        <CardForm/>
       </main>
     </>
   );
