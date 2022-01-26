@@ -9,6 +9,26 @@
   font-size: 16px;
   justify-self: center;
 
+  &__front {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__back {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
   &__number {
     font-size: 30px;
     padding-top: 90px;
@@ -29,5 +49,25 @@
     position: absolute;
     right: 20px;
     bottom: 20px;
+  }
+
+  &__strip {
+    background: #000;
+    height: 50px;
+    margin-bottom: 30px;
+  }
+
+  &__signature {
+    width: 65%;
+    height: 40px;
+    background: #999;
+  }
+
+  &__ccv {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+    background: #fff;
+    color: #111;
   }
 }

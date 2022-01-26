@@ -2,9 +2,8 @@
   display: grid;
   grid-gap: 10px;
   grid-template-columns: auto auto;
-  grid-template-rows: auto auto auto auto;
+  grid-template-rows: auto 110px 110px 110px auto;
   grid-template-areas: 'card card' 'name name' 'number number' 'expiration security' 'submit submit';
-  //width: 100%;
   padding: 20px;
   color: #707070;
 
