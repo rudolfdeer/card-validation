@@ -19,8 +19,6 @@ const ValidationSchema = Yup.object().shape({
     .required('required'),
 });
 
-const turnBack = (e) => {};
-
 export default function CardForm() {
   const [side, setSide] = useState('front');
 
