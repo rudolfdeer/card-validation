@@ -38,7 +38,7 @@ describe('form tests', () => {
     });
   });
 
-  it('changing card side to back on cvv input focus', async () => {
+  it('changing card side to back after clicking on cvv input', async () => {
     render(<CardForm />);
     userEvent.click(screen.getByLabelText(/securitycode/i));
     await waitFor(() => {
@@ -46,7 +46,7 @@ describe('form tests', () => {
     });
   });
 
-  it('changing card side to front on name input focus', async () => {
+  it('changing card side to front after clicking on name input', async () => {
     render(<CardForm />);
     userEvent.click(screen.getByLabelText(/name/i));
     await waitFor(() => {
@@ -80,7 +80,7 @@ describe('form tests', () => {
     });
   });
 
-  it('validating expiration month', async () => {
+  it('validating month of expiration', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/expireMM/i), '');
     userEvent.click(screen.getByLabelText(/name/i));
