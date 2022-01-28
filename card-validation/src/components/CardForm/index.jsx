@@ -19,8 +19,13 @@ const ValidationSchema = Yup.object().shape({
     .required('required'),
 });
 
-export default function CardForm() {
+export default function CardForm({ onSubmit }) {
   const [side, setSide] = useState('front');
+
+  const handleSubmit = (values) => {
+    console.log('values', values);
+    onSubmit(values);
+  };
 
   return (
     <Formik
@@ -32,9 +37,8 @@ export default function CardForm() {
         securitycode: '',
       }}
       validationSchema={ValidationSchema}
-      onSubmit={(values) => {
-        console.log(values);
-      }}
+      onSubmit={onSubmit}
+      data-testid="form"
     >
       {({ errors, touched, values }) => (
         <Form className="form">
@@ -45,6 +49,7 @@ export default function CardForm() {
             </label>
             <Field
               name="name"
+              aria-label="name"
               type="text"
               className="field__input"
               onClick={() => setSide('front')}
@@ -59,6 +64,7 @@ export default function CardForm() {
             </label>
             <Field
               name="cardnumber"
+              aria-label="cardnumber"
               type="text"
               className="field__input"
               onClick={() => setSide('front')}
@@ -76,6 +82,7 @@ export default function CardForm() {
                 <Field
                   as="select"
                   name="expireMM"
+                  aria-label="expireMM"
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
@@ -101,6 +108,7 @@ export default function CardForm() {
                 <Field
                   as="select"
                   name="expireYY"
+                  aria-label="expireYY"
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
@@ -123,6 +131,7 @@ export default function CardForm() {
             </label>
             <Field
               name="securitycode"
+              aria-label="securitycode"
               type="text"
               className="field__input"
               onClick={() => setSide('back')}
@@ -132,7 +141,11 @@ export default function CardForm() {
             ) : null}
           </div>
           <div className="field">
-            <button type="submit" className="field__input--submit">
+            <button
+              // onClick={handleSubmit}
+              type="submit"
+              className="field__input--submit"
+            >
               Submit
             </button>
           </div>

@@ -21,10 +21,10 @@ export default function Card({ values, side }) {
         </div>
       ) : (
         <div className="card__back">
-          <div class="card__strip"></div>
+          <div className="card__strip"></div>
           <div className="card__container">
-            <div class="card__signature"></div>
-            <div class="card__ccv">{securitycode ? securitycode : '###'}</div>
+            <div className="card__signature"></div>
+            <div className="card__ccv">{securitycode ? securitycode : '###'}</div>
           </div>
         </div>
       )}

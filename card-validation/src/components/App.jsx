@@ -7,7 +7,7 @@ function App() {
         <h1 className="header__title">Payment information</h1>
       </header>
       <main className="main">
-        <CardForm/>
+        <CardForm onSubmit={() => {}} />
       </main>
     </>
   );
