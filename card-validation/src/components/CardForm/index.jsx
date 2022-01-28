@@ -37,7 +37,7 @@ export default function CardForm({ onSubmit }) {
         securitycode: '',
       }}
       validationSchema={ValidationSchema}
-      onSubmit={onSubmit}
+      onSubmit={handleSubmit}
       data-testid="form"
     >
       {({ errors, touched, values }) => (
@@ -142,9 +142,10 @@ export default function CardForm({ onSubmit }) {
           </div>
           <div className="field">
             <button
-              // onClick={handleSubmit}
+              //onClick={handleSubmit}
               type="submit"
               className="field__input--submit"
+              data-testid="button"
             >
               Submit
             </button>

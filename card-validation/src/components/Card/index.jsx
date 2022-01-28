@@ -7,7 +7,7 @@ export default function Card({ values, side }) {
   return (
     <div className="field card">
       {side === 'front' ? (
-        <div className="card__front">
+        <div className="card__front" data-testid="card-front">
           <div className="card__number">
             {cardnumber ? cardnumber : '0000 0000 0000 0000'}
           </div>
@@ -20,11 +20,13 @@ export default function Card({ values, side }) {
           <img className="card__logo" src="/visa-logo.png" alt="visa logo" />
         </div>
       ) : (
-        <div className="card__back">
+        <div className="card__back" data-testid="card-back">
           <div className="card__strip"></div>
           <div className="card__container">
             <div className="card__signature"></div>
-            <div className="card__ccv">{securitycode ? securitycode : '###'}</div>
+            <div className="card__ccv">
+              {securitycode ? securitycode : '###'}
+            </div>
           </div>
         </div>
       )}
