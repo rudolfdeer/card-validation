@@ -1,0 +1,73 @@
+.card {
+  position: relative;
+  width: 425px;
+  height: 270px;
+  padding: 30px;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background: #d6eaf8;
+  font-size: 16px;
+  justify-self: center;
+
+  &__front {
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__container {
+    display: flex;
+  }
+
+  &__back {
+    padding-left: 0;
+    padding-right: 0;
+    text-align: left;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__number {
+    font-size: 30px;
+    padding-top: 90px;
+    margin-bottom: 15px;
+  }
+
+  &__expiry-date {
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-align: start;
+  }
+
+  &__owner {
+    text-align: left;
+  }
+
+  &__logo {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+  }
+
+  &__strip {
+    background: #000;
+    height: 50px;
+    margin-bottom: 30px;
+  }
+
+  &__signature {
+    width: 65%;
+    height: 40px;
+    background: #999;
+  }
+
+  &__ccv {
+    width: 50px;
+    height: 40px;
+    padding: 5px;
+    background: #fff;
+    color: #111;
+  }
+}
