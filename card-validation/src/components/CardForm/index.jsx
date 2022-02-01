@@ -7,7 +7,6 @@ import years from '../../constants/years';
 
 import './index.scss';
 
-
 const ValidationSchema = Yup.object().shape({
   name: Yup.string()
     .matches(/^((?:[A-Za-z]+ ?){1,3})$/, 'enter a valid name')
@@ -92,9 +91,8 @@ export default function CardForm({ onSubmit }) {
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
-                  <option value="">Month</option>
                   {months.map((el) => (
-                    <option value={el.value} key={el.value}>
+                    <option value={el.value} key={el.name}>
                       {el.name}
                     </option>
                   ))}
@@ -111,9 +109,8 @@ export default function CardForm({ onSubmit }) {
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
-                  <option value="">Year</option>
                   {years.map((el) => (
-                    <option value={el.value} key={el.value}>
+                    <option value={el.value} key={el.name}>
                       {el.name}
                     </option>
                   ))}
