@@ -1,7 +1,6 @@
 import React from 'react';
 import { render, screen, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
-import userEvent from '@testing-library/user-event';
 import Card from '../components/Card';
 
 const values = {
@@ -13,15 +12,15 @@ const values = {
 };
 const side = 'front';
 
-describe('card tests', () => {
-  it('displaying values on card', async () => {
+describe('Card component', () => {
+  it('should display values on card', async () => {
     render(<Card values={values} side={side} />);
     await waitFor(() => {
       expect(screen.getByText(values.cardnumber)).toBeInTheDocument();
     });
   });
 
-  it('displaying name in upper case', async () => {
+  it('should display name in upper case', async () => {
     render(<Card values={values} side={side} />);
     await waitFor(() => {
       expect(screen.getByText(values.name.toUpperCase())).toBeInTheDocument();

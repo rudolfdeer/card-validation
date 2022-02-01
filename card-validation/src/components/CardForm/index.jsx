@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import Card from '../Card';
+import months from '../../constants/months';
+import years from '../../constants/years';
+
 import './index.scss';
+
 
 const ValidationSchema = Yup.object().shape({
   name: Yup.string()
@@ -19,6 +23,14 @@ const ValidationSchema = Yup.object().shape({
     .required('required'),
 });
 
+const initialValues = {
+  name: '',
+  cardnumber: '',
+  expireMM: '',
+  expireYY: '',
+  securitycode: '',
+};
+
 export default function CardForm({ onSubmit }) {
   const [side, setSide] = useState('front');
 
@@ -29,13 +41,7 @@ export default function CardForm({ onSubmit }) {
 
   return (
     <Formik
-      initialValues={{
-        name: '',
-        cardnumber: '',
-        expireMM: '',
-        expireYY: '',
-        securitycode: '',
-      }}
+      initialValues={initialValues}
       validationSchema={ValidationSchema}
       onSubmit={handleSubmit}
       data-testid="form"
@@ -87,18 +93,11 @@ export default function CardForm({ onSubmit }) {
                   onClick={() => setSide('front')}
                 >
                   <option value="">Month</option>
-                  <option value="01">January</option>
-                  <option value="02">February</option>
-                  <option value="03">March</option>
-                  <option value="04">April</option>
-                  <option value="05">May</option>
-                  <option value="06">June</option>
-                  <option value="07">July</option>
-                  <option value="08">August</option>
-                  <option value="09">September</option>
-                  <option value="10">October</option>
-                  <option value="11">November</option>
-                  <option value="12">December</option>
+                  {months.map((el) => (
+                    <option value={el.value} key={el.value}>
+                      {el.name}
+                    </option>
+                  ))}
                 </Field>
                 {errors.expireMM && touched.expireMM ? (
                   <span className="field__error">{errors.expireMM}</span>
@@ -113,11 +112,11 @@ export default function CardForm({ onSubmit }) {
                   onClick={() => setSide('front')}
                 >
                   <option value="">Year</option>
-                  <option value="22">2022</option>
-                  <option value="23">2023</option>
-                  <option value="24">2024</option>
-                  <option value="25">2025</option>
-                  <option value="26">2026</option>
+                  {years.map((el) => (
+                    <option value={el.value} key={el.value}>
+                      {el.name}
+                    </option>
+                  ))}
                 </Field>
                 {errors.expireYY && touched.expireYY ? (
                   <span className="field__error">{errors.expireYY}</span>

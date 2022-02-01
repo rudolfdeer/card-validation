@@ -4,8 +4,8 @@ import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
 import CardForm from '../components/CardForm';
 
-describe('form tests', () => {
-  it('submitting a form', async () => {
+describe('CardForm component', () => {
+  it('should submit a form', async () => {
     const handleSubmit = jest.fn();
 
     render(<CardForm onSubmit={handleSubmit} />);
@@ -30,7 +30,7 @@ describe('form tests', () => {
     });
   });
 
-  it('changing input value', async () => {
+  it('should change input value', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/name/i), 'John Doe');
     await waitFor(() => {
@@ -38,7 +38,7 @@ describe('form tests', () => {
     });
   });
 
-  it('changing card side to back after clicking on cvv input', async () => {
+  it('should change card side to back when cvv input is clicked', async () => {
     render(<CardForm />);
     userEvent.click(screen.getByLabelText(/securitycode/i));
     await waitFor(() => {
@@ -46,7 +46,7 @@ describe('form tests', () => {
     });
   });
 
-  it('changing card side to front after clicking on name input', async () => {
+  it('should change card side to front when name input is clicked', async () => {
     render(<CardForm />);
     userEvent.click(screen.getByLabelText(/name/i));
     await waitFor(() => {
@@ -54,7 +54,7 @@ describe('form tests', () => {
     });
   });
 
-  it('displaying input values on card', async () => {
+  it('should display input values on card', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/cardnumber/i), '1234567812345678');
     await waitFor(() => {
@@ -62,7 +62,7 @@ describe('form tests', () => {
     });
   });
 
-  it('validating card name', async () => {
+  it('should validate name', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/name/i), '235Fnskair');
     userEvent.click(screen.getByLabelText(/cardnumber/i));
@@ -71,7 +71,7 @@ describe('form tests', () => {
     });
   });
 
-  it('validating card number', async () => {
+  it('should validate number', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/cardnumber/i), '235000');
     userEvent.click(screen.getByLabelText(/name/i));
@@ -80,7 +80,7 @@ describe('form tests', () => {
     });
   });
 
-  it('validating month of expiration', async () => {
+  it('should validate month of expiration', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/expireMM/i), '');
     userEvent.click(screen.getByLabelText(/name/i));
@@ -89,7 +89,7 @@ describe('form tests', () => {
     });
   });
 
-  it('validating card security code', async () => {
+  it('should validate security code', async () => {
     render(<CardForm />);
     userEvent.type(screen.getByLabelText(/securitycode/i), '22');
     userEvent.click(screen.getByLabelText(/name/i));
