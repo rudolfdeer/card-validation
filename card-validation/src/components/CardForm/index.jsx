@@ -34,19 +34,18 @@ export default function CardForm({ onSubmit }) {
   const [side, setSide] = useState('front');
 
   const handleSubmit = (values) => {
-    console.log('values', values);
-    onSubmit(values);
-  };
+    console.log(values);
+    onSubmit(values)
+  }
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={ValidationSchema}
       onSubmit={handleSubmit}
-      data-testid="form"
     >
       {({ errors, touched, values }) => (
-        <Form className="form">
+        <Form className="form" data-testid="form">
           <Card values={values} side={side} />
           <div className="field">
             <label htmlFor="name" className="field__label">
@@ -54,8 +53,8 @@ export default function CardForm({ onSubmit }) {
             </label>
             <Field
               name="name"
-              aria-label="name"
               type="text"
+              id="name"
               className="field__input"
               onClick={() => setSide('front')}
             />
@@ -69,7 +68,7 @@ export default function CardForm({ onSubmit }) {
             </label>
             <Field
               name="cardnumber"
-              aria-label="cardnumber"
+              id="cardnumber"
               type="text"
               className="field__input"
               onClick={() => setSide('front')}
@@ -79,15 +78,17 @@ export default function CardForm({ onSubmit }) {
             ) : null}
           </div>
           <div className="field">
-            <label htmlFor="expirationdate" className="field__label">
+            <div className="field__label">
               Expiration (mm/yy)
-            </label>
+            </div>
             <div className="field__container">
               <div className="field__container__content">
+              <label htmlFor="expireMM" className="field__label"></label>
                 <Field
                   as="select"
                   name="expireMM"
-                  aria-label="expireMM"
+                  aria-label="month"
+                  id="expireMM"
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
@@ -102,10 +103,12 @@ export default function CardForm({ onSubmit }) {
                 ) : null}
               </div>
               <div className="field__container__content">
+              <label htmlFor="expireYY" className="field__label"></label>
                 <Field
                   as="select"
                   name="expireYY"
-                  aria-label="expireYY"
+                  aria-label="year"
+                  id="expireYY"
                   className="field__select"
                   onClick={() => setSide('front')}
                 >
@@ -122,12 +125,12 @@ export default function CardForm({ onSubmit }) {
             </div>
           </div>
           <div className="field">
-            <label htmlFor="securitycode" className="field__label">
+            <label htmlFor="securitycode" className="field__label" >
               Security Code
             </label>
             <Field
               name="securitycode"
-              aria-label="securitycode"
+              id="securitycode"
               type="text"
               className="field__input"
               onClick={() => setSide('back')}
@@ -138,7 +141,6 @@ export default function CardForm({ onSubmit }) {
           </div>
           <div className="field">
             <button
-              //onClick={handleSubmit}
               type="submit"
               className="field__input--submit"
               data-testid="button"
@@ -147,7 +149,7 @@ export default function CardForm({ onSubmit }) {
             </button>
           </div>
         </Form>
-      )}
+       )} 
     </Formik>
   );
 }
