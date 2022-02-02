@@ -1,5 +1,5 @@
 import React from 'react';
-import { act, fireEvent, render, screen, waitFor } from '@testing-library/react';
+import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event'
 import '@testing-library/jest-dom';
 import CardForm from '../components/CardForm';
@@ -9,7 +9,7 @@ describe('CardForm component', () => {
     const handleSubmit = jest.fn();
     render(<CardForm onSubmit={handleSubmit} />);
 
-    await act(async() => {
+    await waitFor(() => {
       fireEvent.change(screen.getByLabelText(/name/i), { target: { value: "John Doe" } });
       fireEvent.change(screen.getByLabelText(/card number/i), { target: { value: '4916988831312424' }});
       fireEvent.change(screen.getByLabelText(/month/i), { target: { value: '04'}});
@@ -17,7 +17,7 @@ describe('CardForm component', () => {
       fireEvent.change(screen.getByLabelText(/security code/i), { target: { value: '232' }});
     })
 
-    await act(async () => {
+    await waitFor(() => {
       fireEvent.submit(screen.getByTestId('form'))
     });
 
